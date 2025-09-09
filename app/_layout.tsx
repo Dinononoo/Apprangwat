@@ -3,10 +3,25 @@ import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
-import { useEffect } from 'react';
+import { useEffect, createContext, useContext } from 'react';
 import 'react-native-reanimated';
 
-import { useColorScheme } from '@/hooks/useColorScheme';
+import { useColorScheme } from '../hooks/useColorScheme';
+
+// Create Data Context
+export const DataContext = createContext({
+  point1Data: {},
+  point2Data: {},
+  imagePoint1: null,
+  imagePoint2: null,
+  isConnected: false,
+  submitPointsToServer: () => {},
+  loadSavedData: () => {},
+  saveDataToStorage: () => {},
+  checkInternetConnection: () => {}
+});
+
+export const useDataContext = () => useContext(DataContext);
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -29,9 +44,31 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
+      <Stack
+        screenOptions={{
+          headerShown: false,
+          title: '',
+          headerTitle: '',
+          header: () => null,
+        }}>
+        <Stack.Screen 
+          name="(tabs)" 
+          options={{ 
+            headerShown: false,
+            title: '',
+            headerTitle: '',
+            header: () => null,
+          }} 
+        />
+        <Stack.Screen 
+          name="+not-found" 
+          options={{ 
+            headerShown: false,
+            title: '',
+            headerTitle: '',
+            header: () => null,
+          }} 
+        />
       </Stack>
       <StatusBar style="auto" />
     </ThemeProvider>

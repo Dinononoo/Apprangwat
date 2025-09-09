@@ -15,7 +15,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.pawee1919.dp.mynewbluetoothapp"
     },
     "web": {
       "bundler": "metro",
