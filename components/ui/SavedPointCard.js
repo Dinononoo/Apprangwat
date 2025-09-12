@@ -42,8 +42,8 @@ const SavedPointCard = ({ data, pointNumber, image, pickImage }) => {
           </View>
         </View>
 
-        {Object.entries(data)
-          .filter(([key]) => !['mode', 'timestamp', 'slope', 'altitude', 'roll', 'yaw', 'accuracy', 'deviceId', 'pointNumber'].includes(key))
+        {data && typeof data === 'object' && Object.entries(data)
+          .filter(([key]) => !['mode', 'timestamp', 'slope', 'altitude', 'roll', 'yaw', 'accuracy', 'deviceId', 'pointNumber', 'quality', 'savedAt', 'version', 'offlineMode'].includes(key))
           .map(([key, value]) => (
             <View key={key} style={styles.dataRow}>
               <View style={styles.dataKeyContainer}>

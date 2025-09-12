@@ -1503,10 +1503,7 @@ const connectToDevice = async (deviceToConnect) => {
         try {
           // บันทึกข้อมูลหลัก
           const enhancedData = {
-            ...data,
-            savedAt: new Date().toISOString(),
-            version: '1.0',
-            offlineMode: !isConnected
+            ...data
           };
           
           await SecureStore.setItemAsync(`point${pointNumber}Data`, JSON.stringify(enhancedData));
