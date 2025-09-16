@@ -513,8 +513,8 @@ const TelescopeView = React.forwardRef(({
                 Alert.alert('ข้อผิดพลาด', 'ไม่สามารถถ่ายภาพได้');
               }
             } catch (error) {
-              console.error('❌ Save process error:', error);
-              Alert.alert('ข้อผิดพลาด', `ไม่สามารถบันทึกข้อมูลได้: ${error.message}`);
+              console.log('❌ Save process error:', error);
+              Alert.alert('ข้อผิดพลาด', 'ไม่สามารถบันทึกข้อมูลได้ กรุณาลองใหม่');
             } finally {
               setIsSaving(false);
             }

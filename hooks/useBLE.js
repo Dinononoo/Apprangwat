@@ -1444,7 +1444,7 @@ const connectToDevice = async (deviceToConnect) => {
             
             // บันทึกทันทีแบบออฟไลน์
             await SecureStore.setItemAsync(`imagePoint2`, JSON.stringify(imageWithMeta));
-            await SecureStore.setItemAsync(`imagePoint2List`, JSON.stringify(imageWithMeta));
+            await SecureStore.setItemAsync(`imagePoint2List`, JSON.stringify(newList));
             console.log(`💾 Saved image offline for point 2, total: ${newList.length}`);
             console.log('📷 imagePoint2 state updated with:', imageWithMeta);
             
@@ -1478,8 +1478,8 @@ const connectToDevice = async (deviceToConnect) => {
           }
           
         } catch (error) {
-          console.error(`❌ Error adding image to point ${pointNumber}:`, error);
-          console.error('Error details:', error.message);
+          console.log(`❌ Error adding image to point ${pointNumber}:`, error);
+          console.log('Error details:', error.message);
           
           // Try basic fallback save
           try {
